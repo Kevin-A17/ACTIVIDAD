@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventario Restaurante</title>
+<link rel="stylesheet" href="Codigo2.css">
+  <link rel="shortcut icon" type="image/x-ico" href="img/logo.jpg">
+</head>
+<body>
+
+  <!-- Pantalla de inicio de sesión -->
+  <div class="login-screen login-background">
+    <h1>Bienvenido</h1>
+    <select id="user-role">
+      <option value="">Seleccione un usuario</option>
+      <option value="admin">Administrador</option>
+      <option value="gerente">Gerente</option>
+      <option value="empleado">Empleado</option>
+      <option value="invitado">Invitado</option>
+    </select>
+    <input type="password" id="pin" placeholder="Ingrese su PIN" />
+    <button onclick="login()">Ingresar</button>
+    <p id="error-msg" class="hidden">PIN incorrecto</p>
+  </div>
+
+  <!-- Pantalla principal -->
+  <div id="main-screen" class="main-screen hidden">
+    <aside class="sidebar">
+      <section>
+        <h3>PRINCIPAL</h3>
+        <ul>
+          <li>Ventas</li>
+          <li>Editar ventas</li>
+          <li>Clientes</li>
+          <li>Movimientos de caja</li>
+          <li>Cierre de caja</li>
+          <li>Facturación</li>
+        </ul>
+      </section>
+      <section>
+        <h3>ADMINISTRACIÓN</h3>
+        <ul>
+          <li>Clientes</li>
+          <li>Inventario</li>
+          <li>Ventas</li>
+          <li>Mantenimiento</li>
+        </ul>
+      </section>
+      <section>
+        <h3>SISTEMA</h3>
+        <ul>
+          <li>Cambiar clave</li>
+          <li>Configuración</li>
+          <li>Impresora</li>
+          <li>Salir</li>
+        </ul>
+      </section>
+    </aside>
+
+    <main class="main-area">
+      <div class="salones">
+        <button>Salón 1</button>
+        <button>Salón 2</button>
+      </div>
+      <div class="mesas">
+        <div class="mesa">Mesa 1</div>
+        <div class="mesa">Mesa 2</div>
+        <div class="mesa">Mesa 3</div>
+        <div class="mesa">Mesa 4</div>
+        <div class="mesa">Mesa 5</div>
+        <div class="mesa">Mesa 6</div>
+        <div class="mesa">Mesa 7</div>
+        <div class="mesa">Mesa 8</div>
+        <div class="mesa">Mesa 9</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const pins = {
+      admin: "1234",
+      gerente: "1234",
+      empleado: "1234",
+      invitado: "1234"
+    };
+
+    function login() {
+      const role = document.getElementById("user-role").value;
+      const pin = document.getElementById("pin").value;
+      const errorMsg = document.getElementById("error-msg");
+
+      if (pins[role] === pin) {
+        document.querySelector(".login-screen").classList.add("hidden");
+        document.getElementById("main-screen").classList.remove("hidden");
+      } else {
+        errorMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
